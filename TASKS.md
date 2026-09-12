@@ -20,22 +20,22 @@ This board coordinates active work streams across the 4 autonomous agents.
 - [x] Create `TASKS.md` (Team task board)
 - [x] Update `README.md` (Project pitch, setup, and overview)
 
-### Phase 2: Full Backend & Engine Implementation (Active)
-- [ ] Initialize Python 3.13 project structure with FastAPI & SQLAlchemy
-- [ ] Implement SQLAlchemy data models (`User`, `Character`, `Attribute`, `Species`, `Creature`, `Collection`, `Streak`, `Activity`, `QuestChain`, `QuestStep`, `Chronicle`, `Achievement`)
-- [ ] Seed the 15 original Anima species into the database
-- [ ] Implement Pydantic v2 validation schemas matching `API_CONTRACT.md`
-- [ ] Implement JWT authentication, password hashing, and user isolation
-- [ ] Implement `AttributeEngine` & `ProgressionEngine` (XP curves, difficulty multipliers)
-- [ ] Implement `CreatureEngine` (Stats, bond score, mood states)
-- [ ] Implement `EvolutionEngine` (Tier 1 $\rightarrow$ Tier 2 branched logic, Tier 3 apex, Lifedex registration)
-- [ ] Implement `StreakEngine` (Timezone-aware date tracking, milestone bonuses)
-- [ ] Implement `QuestChainEngine` (Goal hierarchy & step locking)
-- [ ] Implement `ChronicleEngine` (Immutable event logging)
-- [ ] Implement `AchievementEngine` (Automated badge unlocks)
-- [ ] Implement Anti-Cheat and validation guards (cooldowns, idempotency, ownership)
-- [ ] Implement API routers (`auth`, `character`, `activities`, `creatures`, `quest_chains`, `chronicle`, `achievements`)
-- [ ] Author comprehensive Pytest test suite covering all game mechanics and edge cases
+### Phase 2: Full Backend & Engine Implementation (Completed)
+- [x] Initialize Python 3.13 project structure with FastAPI & SQLAlchemy
+- [x] Implement SQLAlchemy data models (`User`, `Character`, `Attribute`, `Species`, `Creature`, `Collection`, `Streak`, `Activity`, `QuestChain`, `QuestStep`, `Chronicle`, `Achievement`)
+- [x] Seed the 15 original Anima species into the database
+- [x] Implement Pydantic v2 validation schemas matching `API_CONTRACT.md`
+- [x] Implement JWT authentication, password hashing, and user isolation
+- [x] Implement `AttributeEngine` & `ProgressionEngine` (XP curves, difficulty multipliers)
+- [x] Implement `CreatureEngine` (Stats, bond score, mood states)
+- [x] Implement `EvolutionEngine` (Tier 1 $\rightarrow$ Tier 2 branched logic, Tier 3 apex, Lifedex registration)
+- [x] Implement `StreakEngine` (Timezone-aware date tracking, milestone bonuses)
+- [x] Implement `QuestChainEngine` (Goal hierarchy & step locking)
+- [x] Implement `ChronicleEngine` (Immutable event logging)
+- [x] Implement `AchievementEngine` (Automated badge unlocks)
+- [x] Implement Anti-Cheat and validation guards (cooldowns, idempotency, ownership)
+- [x] Implement API routers (`auth`, `character`, `activities`, `creatures`, `quest_chains`, `chronicle`, `achievements`)
+- [x] Author comprehensive Pytest test suite (19 unit/domain/integration tests passed, 100% success)
 
 ---
 
