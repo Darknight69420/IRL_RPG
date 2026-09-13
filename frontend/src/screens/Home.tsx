@@ -13,6 +13,11 @@ const TaskModal: React.FC<{
   const [newTitle, setNewTitle] = useState('');
   const [newDesc, setNewDesc] = useState('');
   const [newDiff, setNewDiff] = useState<'Easy' | 'Medium' | 'Hard'>('Easy');
+  // Editing task state
+  const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editDesc, setEditDesc] = useState('');
+  const [editDiff, setEditDiff] = useState<'Easy' | 'Medium' | 'Hard'>('Easy');
 
   useEffect(() => {
     if (category) {
@@ -60,15 +65,43 @@ const TaskModal: React.FC<{
         <h2 className="text-xl font-semibold mb-2">{category.name} Tasks</h2>
         {/* Task List */}
         <ul className="space-y-2 overflow-auto flex-1 mb-4">
-          {tasks.map(task => (
-            <li key={task.id} className="flex items-center justify-between p-2 border rounded">
-              <div className="flex-1">{task.completed ? <s>{task.title}</s> : task.title}</div>
-              <div className="flex space-x-1">
-                <button className="text-sm text-blue-600" onClick={() => handleComplete(task.id)}>{task.completed ? '✓' : 'Complete'}</button>
-                <button className="text-sm text-gray-600" onClick={() => handleDelete(task.id)}>Del</button>
-              </div>
-            </li>
-          ))}
+              {tasks.map(task => (
+                <li key={task.id} className="flex items-center justify-between p-2 border rounded">
+                  {editingTaskId === task.id ? (
+                    <div className="flex flex-col w-full mr-2">
+                      <input className="w-full mb-1 p-1 border rounded" value={editTitle} onChange={e => setEditTitle(e.target.value)} placeholder="Title" />
+                      <textarea className="w-full mb-1 p-1 border rounded" value={editDesc} onChange={e => setEditDesc(e.target.value)} placeholder="Description" />
+                      <select className="w-full mb-1 p-1 border rounded" value={editDiff} onChange={e => setEditDiff(e.target.value as any)}>
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                      </select>
+                      <div className="flex space-x-2 mt-1">
+                        <button className="text-sm text-green-600" onClick={async () => {
+                          await updateTask({ ...task, title: editTitle, description: editDesc, difficulty: editDiff });
+                          setEditingTaskId(null);
+                          refresh();
+                        }}>Save</button>
+                        <button className="text-sm text-red-600" onClick={() => setEditingTaskId(null)}>Cancel</button>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex-1">{task.completed ? <s>{task.title}</s> : task.title}</div>
+                      <div className="flex space-x-1">
+                        <button className="text-sm text-blue-600" onClick={() => handleComplete(task.id)}>{task.completed ? '✓' : 'Complete'}</button>
+                        <button className="text-sm text-gray-600" onClick={() => handleDelete(task.id)}>Del</button>
+                        <button className="text-sm text-indigo-600" onClick={() => {
+                          setEditingTaskId(task.id);
+                          setEditTitle(task.title);
+                          setEditDesc(task.description);
+                          setEditDiff(task.difficulty);
+                        }}>Edit</button>
+                      </div>
+                    </>
+                  )}
+                </li>
+              ))}
         </ul>
         {/* New Task Form */}
         <div className="border-t pt-2">
