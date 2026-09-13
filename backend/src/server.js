@@ -10,7 +10,11 @@ app.use(express.json());
 
 // Register auth routes
 const authRouter = require('./routes/auth');
+const categoriesRouter = require('./routes/categories');
+const tasksRouter = require('./routes/tasks');
 app.use('/auth', authRouter);
+app.use('/categories', categoriesRouter);
+app.use('/tasks', tasksRouter);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
