@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const prisma = require('../..//prisma/client'); // placeholder, will be resolved via @prisma/client import
+const prisma = require('../prisma/client');
 
 const router = express.Router();
 

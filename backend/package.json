@@ -7,11 +7,11 @@
     "prisma": "prisma"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "@prisma/client": "^5.9.0",
-    "prisma": "^5.9.0",
+    "@prisma/client": "^5.22.0",
     "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "dotenv": "^16.3.1"
+    "prisma": "^5.9.0"
   }
 }
